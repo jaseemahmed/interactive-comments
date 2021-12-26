@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Comments from "./components/Comments";
+import './Styles.css'
+import { CommentsData } from './Data/data'
 
 function App() {
+  const [state, setstate] = useState(CommentsData)
+  //  useEffect(() => {
+  //    const response = axios.get('./data.json')
+  //    console.log(JSON.stringify(response))
+
+  //  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <div className="container">
+
+        {
+          state && state.map((st) => (
+            st.comments.map((cms, index) => (
+              <Comments 
+              id={cms.id} 
+              polls={cms.score}
+              comment={cms.content}
+              avatar={cms.user.image.png}
+              />
+            ))
+          ))
+        }
+
+      </div>
+    </React.Fragment>
   );
 }
 
