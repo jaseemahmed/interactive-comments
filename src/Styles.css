@@ -1,6 +1,30 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.replyBox:before {
+  content: "";
+  background: #ddd;
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  left: 2rem;
+}
+.replyBox {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  position: relative;
+}
+
 
 @media (max-width: 575.98px) {
   .container {
