@@ -8,32 +8,36 @@ function App() {
   const [state, setState] = useState(CommentsData)
   const [currentUser, setCurrentUser] = useState()
 
-  const commentBox = {
-    background: '#fff',
-    borderRadius: "8px",
-    boxShadow: "rgb(0 0 0 / 16%) 0px 0px 12px 0px",
-    padding: '1rem',
-    margin: "1rem 0",
-    display: 'flex',
-    alignItems: "flex-start"
-  }
 
   useEffect(() => {
     state.map(st => {
-      setCurrentUser(st.currentUser)
-    })    
-  }, [])
+      return setCurrentUser(st.currentUser)
+    })
+  }, [state])
 
   return (
     <React.Fragment>
       <div className="container">
-        {state.map((d, i) => (
-          d.comments.map((item, index) => (
-            <div style={commentBox}>
-            <CommentBox key={index} avatar={item.user.image.png} name={item.user.username} date={item.createdAt} comment={item.content} polls={item.score}/>
-            </div>
+        {
+          state.map((item) => (
+            item.comments.map((item) => (
+
+              <React.Fragment>
+                <div className="commentBox" key={item.id}>
+                  <CommentBox avatar={item.user.image.png} name={item.user.username} date={item.createdAt} comment={item.content} polls={item.score} currentUser={currentUser} />
+                </div>
+                <div className="replies">
+                  {item.replies.map((rp) => (
+                    rp &&
+                    <div className="replyBox" key={rp.id}>
+                      <CommentBox avatar={rp.user.image.png} name={rp.user.username} date={rp.createdAt} comment={rp.content} polls={rp.score} currentUser={currentUser} />
+                    </div>
+                  ))}
+                </div>
+              </React.Fragment>
+            ))
           ))
-        ))}
+        }
       </div>
     </React.Fragment>
   );

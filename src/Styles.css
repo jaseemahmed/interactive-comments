@@ -9,27 +9,81 @@
   flex-direction: column;
   align-items: flex-end;
 }
+.replies {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+}
 
-.replyBox:before {
+.replies:before {
   content: "";
   background: #ddd;
   width: 2px;
   height: 100%;
   position: absolute;
-  left: 2rem;
+  left: 2.5rem;
 }
+.commentBox,
 .replyBox {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: rgb(0 0 0 / 16%) 0px 0px 12px 0px;
+  padding: 1rem;
+  margin: 1rem 0;
   display: flex;
-  align-items: flex-end;
-  flex-direction: column;
+  align-items: flex-start;
   position: relative;
 }
 
+.replyBox {
+  width: 92%;
+}
+
+.iconBtnContainer {
+  display: flex;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.content {
+  line-height: 1.75rem;
+  text-align: justify;
+}
+.wrapper {
+  width: 90%;
+  margin: auto;
+}
+.xmargin {
+  margin: 0 8px;
+}
+
+.blue {
+  fill: #5461b6;
+}
+.red {
+  fill: #ed6468;
+}
 
 @media (max-width: 575.98px) {
   .container {
     width: 100%;
     margin: auto;
+  }
+  .iconBtnContainer {
+    top: 85%;
+  }
+  .commentBox,
+  .replyBox {
+    flex-direction: column;
+  }
+  .replies:before {
+    left: 0.5rem;
+  }
+  .wrapper {
+    width: 100%;
   }
 }
 
@@ -38,12 +92,38 @@
     width: 100%;
     margin: auto;
   }
+  .iconBtnContainer {
+    top: 85%;
+  }
+  .commentBox,
+  .replyBox {
+    flex-direction: column;
+  }
+  .replies:before {
+    left: 0.5rem;
+  }
+  .wrapper {
+    width: 100%;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   .container {
     max-width: 720px;
     margin: auto;
+  }
+  .iconBtnContainer {
+    top: 85%;
+  }
+  .commentBox,
+  .replyBox {
+    flex-direction: column;
+  }
+  .replies:before {
+    left: 0.5rem;
+  }
+  .wrapper {
+    width: 100%;
   }
 }
 
