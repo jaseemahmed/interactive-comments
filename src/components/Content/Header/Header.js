@@ -20,7 +20,15 @@ const PostDate = styled.p`
     color: #67727E;
 `
 
-const Header = ({ userAvatar, username, postedOn }) => {
+const Tag = styled.p`
+ margin: 0 1rem;
+ color:#fff;
+ background: #5461B6;
+ border-radius: .25rem;
+ padding: .25rem
+`
+
+const Header = ({ userAvatar, username, postedOn, tag }) => {
 
     const headerContainer = {
         display: 'flex',
@@ -33,6 +41,7 @@ const Header = ({ userAvatar, username, postedOn }) => {
                 <UserAvatar>
                     <img width="100%" src={userAvatar} alt="avatar" />
                 </UserAvatar>
+                {tag && <Tag>You</Tag>}
                 <UserName>{username}</UserName>
                 <PostDate>{postedOn}</PostDate>
             </div>

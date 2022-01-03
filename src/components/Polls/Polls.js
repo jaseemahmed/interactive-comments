@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ReactComponent as Plus } from '../../assets/icon-plus.svg'
 import { ReactComponent as Minus } from '../../assets/icon-minus.svg'
+import '../../Styles.css'
 
 const CommentPoll = styled.div`
     display: flex;
@@ -35,19 +36,13 @@ const PollBtn = styled.button`
 
 const Polls = ({ poll }) => {
 
-    const Npolls = {
-
-    }
-
-
-
     return (
         <React.Fragment>
             <CommentPoll>
                 <PollBtn>
                     <Plus />
                 </PollBtn>
-                <p style={Npolls}>{poll}</p>
+                <p className='poll_numbers'>{poll}</p>
                 <PollBtn>
                     <Minus />
                 </PollBtn>

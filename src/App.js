@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import CommentBox from "./components/CommentBox";
 import './Styles.css'
 import { CommentsData } from './Data/data'
+import CommentsInput from "./components/CommentsInput/CommentsInput";
+import { CommentsContext } from "./context/CommentsContext";
 
 
 function App() {
   const [state, setState] = useState(CommentsData)
   const [currentUser, setCurrentUser] = useState()
-
 
   useEffect(() => {
     state.map(st => {
@@ -15,16 +16,19 @@ function App() {
     })
   }, [state])
 
+  const handleClick = (id) => {
+    console.log('clicked ' + id)
+  }
+
   return (
     <React.Fragment>
       <div className="container">
         {
           state.map((item) => (
             item.comments.map((item) => (
-
-              <React.Fragment>
-                <div className="commentBox" key={item.id}>
-                  <CommentBox avatar={item.user.image.png} name={item.user.username} date={item.createdAt} comment={item.content} polls={item.score} currentUser={currentUser} />
+              <React.Fragment key={item.id}>
+                <div className="commentBox">
+                  <CommentBox handleClick={handleClick(item.id)} avatar={item.user.image.png} name={item.user.username} date={item.createdAt} comment={item.content} polls={item.score} currentUser={currentUser} />
                 </div>
                 <div className="replies">
                   {item.replies.map((rp) => (
@@ -38,6 +42,11 @@ function App() {
             ))
           ))
         }
+        <CommentsContext.Provider value={CommentsData}>
+          <div className="commentInputContainer">
+            <CommentsInput />
+          </div>
+        </CommentsContext.Provider>
       </div>
     </React.Fragment>
   );

@@ -67,6 +67,25 @@
   fill: #ed6468;
 }
 
+.poll_numbers{
+  font-weight: 600;
+  color: #5461b6;
+}
+
+.commentInput{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.commentInputContainer{
+  width: 100%;
+    background: #fff;
+    box-shadow: rgb(0 0 0 / 16%) 0px 0px 12px 0px;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    padding: 1rem 0;
+}
+
 @media (max-width: 575.98px) {
   .container {
     width: 100%;
@@ -84,6 +103,11 @@
   }
   .wrapper {
     width: 100%;
+  }
+  .commentInput{
+    position: relative;
+    flex-direction: column;
+    padding: 1rem;
   }
 }
 
@@ -105,6 +129,11 @@
   .wrapper {
     width: 100%;
   }
+  .commentInput{
+    position: relative;
+    flex-direction: column;
+    padding: 1rem;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -124,6 +153,11 @@
   }
   .wrapper {
     width: 100%;
+  }
+  .commentInput{
+    position: relative;
+    flex-direction: column;
+    padding: 1rem;
   }
 }
 
